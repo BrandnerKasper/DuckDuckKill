@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class ShotGun : Node2D
 {
@@ -7,7 +8,7 @@ public partial class ShotGun : Node2D
 	private Timer _timerBetweenShots;
 	bool isShooting = false;
 	[Export] public float WaitTimeBetweenShots = 0.5f;
-	private PackedScene _bullet = (PackedScene)GD.Load("res://scenes//bullet.tscn");
+	private PackedScene _bullet = (PackedScene)GD.Load("res://scenes//bulletManager.tscn");
 
 	public override void _Ready()
 	{
@@ -15,8 +16,7 @@ public partial class ShotGun : Node2D
 		_timerBetweenShots = GetNode<Timer>("TimerBetweenShots");
 		_timerBetweenShots.Timeout += () => isShooting = false;
 	}
-
-
+	
 	[Export] public PackedScene BulletScene { get; set; }
 	public override void _Process(double delta)
 	{
@@ -45,7 +45,8 @@ public partial class ShotGun : Node2D
 			AddScreenShake();
 			_animatedSprite2D.Play("shoot");
 			isShooting = true;
-			_animatedSprite2D.AnimationLooped += () => _animatedSprite2D.Play("default");
+			_animatedSprite2D.AnimationLooped += 
+				() => _animatedSprite2D.Play("default");
 	
 			_timerBetweenShots.WaitTime = WaitTimeBetweenShots;
 
@@ -62,11 +63,20 @@ public partial class ShotGun : Node2D
 		
 		void Shoot()
 		{
-			var b = (Bullet)_bullet.Instantiate();
+			var bulletParent = (Node2D) _bullet.Instantiate();
+			GetTree().Root.AddChild(bulletParent);
 			float offset = 40.0f;
-			Vector2 spawnPosition = GlobalPosition + new Vector2((float)Math.Cos(Rotation) * offset, (float)Math.Sin(Rotation) * offset);
-			b.Start(spawnPosition, Rotation);
-			GetTree().Root.AddChild(b);
+			Vector2 spawnPosition =
+				GlobalPosition + new Vector2((float)Math.Cos(Rotation) * offset, (float)Math.Sin(Rotation) * offset);
+
+			bulletParent.Position = spawnPosition;
+			bulletParent.Rotation = Rotation;
+			var x = bulletParent.GetChildren().OfType<Bullet>();
+			foreach (var bullet in x)
+			{
+				bullet.Start(Rotation);
+			}
+			
 		}
 
 		void AddScreenShake()

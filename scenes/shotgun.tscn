@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ShotGun.cs" id="1_2ier3"]
 [ext_resource type="Texture2D" uid="uid://dnn2whnv4d7of" path="res://assets/sprites/gun.png" id="2_4c85k"]
-[ext_resource type="PackedScene" uid="uid://dmmcb4vwx615a" path="res://scenes/bullet.tscn" id="2_lggvy"]
+[ext_resource type="PackedScene" uid="uid://dmmcb4vwx615a" path="res://scenes/bulletManager.tscn" id="2_6oxar"]
 [ext_resource type="Texture2D" uid="uid://v7udu6ptw35n" path="res://assets/sprites/shotgun-shootcycle.png" id="3_uxblk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_raif7"]
@@ -56,7 +56,7 @@ animations = [{
 [node name="Shotgun" type="Node2D"]
 scale = Vector2(4.02, 4.02)
 script = ExtResource("1_2ier3")
-BulletScene = ExtResource("2_lggvy")
+BulletScene = ExtResource("2_6oxar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10.6965, -0.497512)
