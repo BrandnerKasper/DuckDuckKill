@@ -27,7 +27,6 @@ public partial class ShotGun : Node2D
         // if mouse left button is pressed
         if (@event.IsActionPressed("mouse_left"))
         {
-            GD.Print(Rotation);
             SpawnBullet();
             // This will get the parent and find a child node called "JUICE_ScreenShake"
             var screenShakeNode = GetParent().GetNode("ScreenShakeManager");
@@ -37,7 +36,7 @@ public partial class ShotGun : Node2D
 
             if (screenShake != null) // Just to make sure we got it
             {
-                screenShake.StartShake(1, 3.0f);
+                screenShake.StartShake(7.5f, 0.3f);
             }
         }
 

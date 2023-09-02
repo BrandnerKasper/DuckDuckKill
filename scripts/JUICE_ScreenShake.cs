@@ -41,8 +41,6 @@ public partial class JUICE_ScreenShake : Node
             float yOffset2 = (float)GD.RandRange(-_shakeAmount, _shakeAmount);
             _camera.Offset = _originalOffset + new Vector2(xOffset2, yOffset2);
             
-            GD.Print(_shakeAmount);
-            
             if (_shakeDuration <= 0)
             {
                 _isShaking = false;
