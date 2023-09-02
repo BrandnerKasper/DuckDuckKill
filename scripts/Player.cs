@@ -6,12 +6,12 @@ public partial class Player : CharacterBody2D
 {
 	[Export]
 	public float Speed = 200.0f;
-	
-	public float MaxVelocity = 300.0f;
+	[Export]
 	public float Acceleration = 15.0f;
+	[Export]
 	public float Deceleration = 25.0f;
 	[Export]
-	public float JumpVelocity = -400.0f;
+	public float JumpVelocity = -300.0f;
 	
 	private AnimatedSprite2D _aSprite;
 	
@@ -21,13 +21,15 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_aSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_aSprite.Animation = "idle";
+		_aSprite.Play();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		//GD.Print(Engine.GetFramesPerSecond());
 		Vector2 velocity = Velocity;
-;
+		
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity.Y += Gravity * (float)delta;
@@ -37,8 +39,10 @@ public partial class Player : CharacterBody2D
 			velocity.Y = Jump();
 
 		velocity.X = Move();
-
+		
+		
 		Velocity = velocity;
+		HandleAnimation();
 		MoveAndSlide();
 	}
 
@@ -49,9 +53,7 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("left", "right", "down", "up").Normalized();
 		if (direction != Vector2.Zero)
 		{
-			_aSprite.FlipH = false;
 			velocityX = Mathf.MoveToward(Velocity.X, (direction.X * Speed), Acceleration);
-			_aSprite.FlipH = velocityX > 0;
 		}
 		else
 		{
@@ -65,4 +67,19 @@ public partial class Player : CharacterBody2D
 	{
 		return JumpVelocity;
 	}
+
+	private void HandleAnimation()
+	{
+		if (Velocity.X == 0.0f)
+		{
+			
+			_aSprite.Play("idle");
+		}
+		else
+		{
+			_aSprite.FlipH = Velocity.X < 0;
+			_aSprite.Play("walk");
+		}
+	}
+	
 }
