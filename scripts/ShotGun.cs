@@ -1,18 +1,24 @@
 using Godot;
-using System;
+
+namespace DuckDuckKill.scripts;
 
 public partial class ShotGun : Node2D
 {
+	[Export] 
+	public float WaitTimeBetweenShots = 0.5f;
+	[Export] 
+	public float Recoil = 500.0f;
+	
 	private AnimatedSprite2D _animatedSprite2D;
 	private Timer _timerBetweenShots;
-	bool isShooting = false;
-	[Export] public float WaitTimeBetweenShots = 0.5f;
+	private bool _isShooting = false;
 
 	public override void _Ready()
 	{
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_animatedSprite2D.AnimationLooped += () => _animatedSprite2D.Play("default");
 		_timerBetweenShots = GetNode<Timer>("TimerBetweenShots");
-		_timerBetweenShots.Timeout += () => isShooting = false;
+		_timerBetweenShots.Timeout += () => _isShooting = false;
 	}
 
 
@@ -38,14 +44,13 @@ public partial class ShotGun : Node2D
 	public override void _Input(InputEvent @event)
 	{
 		// if mouse left button is pressed
-		if (!isShooting && @event.IsActionPressed("mouse_left"))
+		if (!_isShooting && @event.IsActionPressed("mouse_left"))
 		{
 			SpawnBullet();
 			AddScreenShake();
 			_animatedSprite2D.Play("shoot");
-			isShooting = true;
-			_animatedSprite2D.AnimationLooped += () => _animatedSprite2D.Play("default");
-	
+			_isShooting = true;
+			
 			_timerBetweenShots.WaitTime = WaitTimeBetweenShots;
 
 			_timerBetweenShots.Start();
@@ -53,7 +58,7 @@ public partial class ShotGun : Node2D
 			var player = GetParent<CharacterBody2D>();
 			var normalizedDirection = new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)).Normalized();
 			GD.Print(normalizedDirection.Length());
-			player.Velocity += normalizedDirection * 500;
+			player.Velocity += normalizedDirection * Recoil;
  
 		}
 

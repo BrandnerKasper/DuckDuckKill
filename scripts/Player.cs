@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D _aSprite;
 	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	private float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
@@ -34,17 +34,19 @@ public partial class Player : CharacterBody2D
 		
 		// Add the gravity.
 		if (!IsOnFloor())
-			velocity.Y += Gravity * (float)delta;
+			velocity.Y += _gravity * (float)delta;
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 			velocity.Y = Jump();
 
 		velocity.X = Move();
-		
-		
+
+
+		velocity.X = Mathf.Min(Speed, velocity.X);
 		Velocity = velocity;
 		HandleAnimation();
+		
 		if (MoveAndSlide())
 			HandleCollision();	
 		// MoveAndSlide();
@@ -98,8 +100,8 @@ public partial class Player : CharacterBody2D
 				{
 					GD.Print($"Collided with: {collidedNode.Name}");
 				}
-				RigidBody2D Col = collision.GetCollider() as RigidBody2D;
-				Col.ApplyImpulse(collision.GetNormal() * - PushForce);
+				RigidBody2D collisionObject = collision.GetCollider() as RigidBody2D;
+				collisionObject?.ApplyImpulse(collision.GetNormal() * -PushForce);
 			}
 		}
 	}

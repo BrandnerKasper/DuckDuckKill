@@ -9,7 +9,7 @@ public partial class VelocityManager : Node
         var shotGunNode = GetParent().GetNode("shotgun");
 
         // This will cast it to your ShotGun script type
-        var shotGun = shotGunNode as ShotGun;
+        var shotGun = shotGunNode as DuckDuckKill.scripts.ShotGun;
 
         if (shotGun != null) // Just to make sure we got it
         {
