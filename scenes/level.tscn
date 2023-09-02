@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccq520uux11k2"]
+[gd_scene load_steps=4 format=3 uid="uid://ccq520uux11k2"]
 
 [ext_resource type="PackedScene" uid="uid://bigo2q6olht6e" path="res://scenes/ground.tscn" id="1_fxxwu"]
 [ext_resource type="PackedScene" uid="uid://wptbdwtir1ow" path="res://scenes/player.tscn" id="2_a3vei"]
+[ext_resource type="PackedScene" uid="uid://bbnssvgfbh53w" path="res://scenes/shotgun.tscn" id="3_n8nd3"]
 
 [node name="Level" type="Node2D"]
 
@@ -16,6 +17,8 @@ scale = Vector2(4.02, 4.02)
 
 [node name="Player" parent="." instance=ExtResource("2_a3vei")]
 position = Vector2(148, 76)
+
+[node name="Shotgun" parent="Player" instance=ExtResource("3_n8nd3")]
 
 [node name="Ground3" parent="." instance=ExtResource("1_fxxwu")]
 position = Vector2(23, 87)

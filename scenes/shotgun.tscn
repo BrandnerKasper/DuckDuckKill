@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bbnssvgfbh53w"]
+
+[node name="Shotgun" type="Node2D"]
+position = Vector2(2, 42)
+scale = Vector2(4.02, 4.02)

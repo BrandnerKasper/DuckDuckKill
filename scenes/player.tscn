@@ -28,3 +28,7 @@ shape = SubResource("CapsuleShape2D_th2tu")
 sprite_frames = SubResource("SpriteFrames_gdq32")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
