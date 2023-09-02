@@ -29,12 +29,14 @@ public partial class ShotGun : Node2D
         {
             SpawnBullet();
             AddScreenShake();
-            // Add Blowback Impulse to player
-            var player = GetParent<CharacterBody2D>();
-            player.Velocity += new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)) * 100;
-            
-            
-        }
+        //     // Add Blowback Impulse to player
+        //     var player = GetParent<CharacterBody2D>();
+        //     var power = new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)).Normalized();
+        //     GD.Print(power);
+        //     player.Velocity += new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)).Normalized() * 1000;
+        //     
+        //     
+         }
 
         return;
 
