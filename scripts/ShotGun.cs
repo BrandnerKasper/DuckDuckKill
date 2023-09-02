@@ -1,6 +1,8 @@
-using Godot;
 using System;
 using System.Linq;
+using Godot;
+
+namespace DuckDuckKill.scripts;
 
 public partial class ShotGun : Node2D
 {
