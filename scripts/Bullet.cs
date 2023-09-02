@@ -5,6 +5,8 @@ public partial class Bullet : CharacterBody2D
 {
 	private float _lifeTime = 2.0f;
 	private int _speed = 500;
+	private Vector2 _initialVelocity = new(0, 0);
+	private float _initialScale;
 
 	public override void _Process(double delta)
 	{
@@ -13,6 +15,9 @@ public partial class Bullet : CharacterBody2D
 		{
 			GetParent().QueueFree();
 		}
+
+		var speedScale = _initialScale * Velocity.Length() / _initialVelocity.Length();
+		Scale = new Vector2(speedScale, speedScale);
 	}
 
 	public override void _PhysicsProcess(double delta)  // Sticking with float for Godot's usual _PhysicsProcess
@@ -28,7 +33,7 @@ public partial class Bullet : CharacterBody2D
 		var collision = MoveAndCollide(Velocity * (float)delta);
 		if (collision != null)
 		{
-			Velocity = Velocity.Bounce(collision.GetNormal());
+			Velocity = Velocity.Bounce(collision.GetNormal()) * 0.9f;
 		}
 	}
 
@@ -40,7 +45,8 @@ public partial class Bullet : CharacterBody2D
 		Vector2 velocity = new Vector2(0, 0);
 		velocity.X = Mathf.Cos(Rotation);
 		velocity.Y = Mathf.Sin(Rotation);
-		Velocity = velocity.Normalized() * _speed;
+		_initialVelocity = Velocity = velocity.Normalized() * _speed;
+		_initialScale = Scale.X;
 	}
 
 
