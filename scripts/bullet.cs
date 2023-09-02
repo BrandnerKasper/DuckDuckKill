@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class bullet : Node2D
+public partial class Bullet : Node2D
 {
     private float _lifeTime = 5;
     public override void _Process(double delta)
