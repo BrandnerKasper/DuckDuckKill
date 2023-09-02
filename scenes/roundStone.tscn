@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk3i8lhqnc4fv"]
+
+[ext_resource type="Texture2D" uid="uid://cq24s4vi63knh" path="res://assets/sprites/roundStone.png" id="1_00i8l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dj73j"]
+radius = 32.1403
+
+[node name="roundStone" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_dj73j")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_00i8l")
