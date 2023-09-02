@@ -26,10 +26,8 @@ public partial class Player : CharacterBody2D
 		_aSprite.Animation = "idle";
 		_aSprite.Play();
 	}
-
 	public override void _PhysicsProcess(double delta)
 	{
-		//GD.Print(Engine.GetFramesPerSecond());
 		Vector2 velocity = Velocity;
 		
 		// Add the gravity.

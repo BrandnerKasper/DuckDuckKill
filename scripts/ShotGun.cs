@@ -7,6 +7,7 @@ public partial class ShotGun : Node2D
 	private Timer _timerBetweenShots;
 	bool isShooting = false;
 	[Export] public float WaitTimeBetweenShots = 0.5f;
+	private PackedScene _bullet = (PackedScene)GD.Load("res://scenes//bullet.tscn");
 
 	public override void _Ready()
 	{
@@ -40,7 +41,7 @@ public partial class ShotGun : Node2D
 		// if mouse left button is pressed
 		if (!isShooting && @event.IsActionPressed("mouse_left"))
 		{
-			SpawnBullet();
+			Shoot();
 			AddScreenShake();
 			_animatedSprite2D.Play("shoot");
 			isShooting = true;
@@ -58,15 +59,14 @@ public partial class ShotGun : Node2D
 		}
 
 		return;
-
-		void SpawnBullet()
+		
+		void Shoot()
 		{
-			Node2D bullet = BulletScene.Instantiate<Node2D>();
-			AddChild(bullet);
-			Vector2 offset;
-			offset.X = Mathf.Cos(Rotation);
-			offset.Y = Mathf.Sin(Rotation);
-			bullet.GlobalPosition = GlobalPosition + offset * 100;
+			var b = (Bullet)_bullet.Instantiate();
+			float offset = 40.0f;
+			Vector2 spawnPosition = GlobalPosition + new Vector2((float)Math.Cos(Rotation) * offset, (float)Math.Sin(Rotation) * offset);
+			b.Start(spawnPosition, Rotation);
+			GetTree().Root.AddChild(b);
 		}
 
 		void AddScreenShake()

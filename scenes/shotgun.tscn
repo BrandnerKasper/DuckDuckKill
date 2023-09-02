@@ -64,5 +64,3 @@ sprite_frames = SubResource("SpriteFrames_dm7no")
 animation = &"shoot"
 
 [node name="TimerBetweenShots" type="Timer" parent="."]
-
-[connection signal="timeout" from="TimerBetweenShots" to="." method="_on_timer_between_shots_timeout"]
