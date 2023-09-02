@@ -4,11 +4,20 @@ namespace DuckDuckKill.scripts;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	[Export]
+	public float Speed = 300.0f;
+	[Export]
+	public float JumpVelocity = -400.0f;
+	
+	private AnimatedSprite2D _aSprite;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+
+	public override void _Ready()
+	{
+		_aSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -28,7 +37,9 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("left", "right", "down", "up").Normalized();
 		if (direction != Vector2.Zero)
 		{
+			_aSprite.FlipH = false;
 			velocity.X = (float)(direction.X * Speed);
+			_aSprite.FlipH = velocity.X > 0;
 		}
 		else
 		{
