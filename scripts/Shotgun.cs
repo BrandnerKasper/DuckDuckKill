@@ -28,16 +28,12 @@ public partial class ShotGun : Node2D
         if (@event.IsActionPressed("mouse_left"))
         {
             SpawnBullet();
-            // This will get the parent and find a child node called "JUICE_ScreenShake"
-            var screenShakeNode = GetParent().GetNode("ScreenShakeManager");
-        
-            // This will cast it to your JUICE_ScreenShake script type
-            var screenShake = screenShakeNode as JUICE_ScreenShake;
-
-            if (screenShake != null) // Just to make sure we got it
-            {
-                screenShake.StartShake(7.5f, 0.3f);
-            }
+            AddScreenShake();
+            // Add Blowback Impulse to player
+            var player = GetParent<CharacterBody2D>();
+            player.Velocity += new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)) * 100;
+            
+            
         }
 
         return;
@@ -50,6 +46,20 @@ public partial class ShotGun : Node2D
             offset.X = Mathf.Cos(Rotation);
             offset.Y = Mathf.Sin(Rotation);
             bullet.GlobalPosition = GlobalPosition + offset * 100;
+        }
+
+        void AddScreenShake()
+        {
+            // This will get the parent and find a child node called "JUICE_ScreenShake"
+            var screenShakeNode = GetParent().GetNode("ScreenShakeManager");
+
+            // This will cast it to your JUICE_ScreenShake script type
+            var screenShake = screenShakeNode as JUICE_ScreenShake;
+
+            if (screenShake != null) // Just to make sure we got it
+            {
+                screenShake.StartShake(7.5f, 0.3f);
+            }
         }
     }
     
