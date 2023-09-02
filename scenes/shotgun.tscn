@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbnssvgfbh53w"]
+[gd_scene load_steps=3 format=3 uid="uid://d4h0voa7dgvve"]
 
 [ext_resource type="Script" path="res://scripts/ShotGun.cs" id="1_2ier3"]
 [ext_resource type="Texture2D" uid="uid://cphbnkfd7hq2s" path="res://assets/sprites/shotgun.png" id="1_w6vh2"]
