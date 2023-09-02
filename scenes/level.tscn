@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccq520uux11k2"]
+
+[ext_resource type="PackedScene" uid="uid://bigo2q6olht6e" path="res://scenes/ground.tscn" id="1_fxxwu"]
+[ext_resource type="PackedScene" uid="uid://wptbdwtir1ow" path="res://scenes/player.tscn" id="2_a3vei"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Ground2" parent="." instance=ExtResource("1_fxxwu")]
+position = Vector2(308, 121)
+rotation = -0.47822
+scale = Vector2(10, 10)
+
+[node name="Ground" parent="." instance=ExtResource("1_fxxwu")]
+position = Vector2(150, 118)
+scale = Vector2(4.02, 4.02)
+
+[node name="Player" parent="." instance=ExtResource("2_a3vei")]
+position = Vector2(148, 76)
+
+[node name="Ground3" parent="." instance=ExtResource("1_fxxwu")]
+position = Vector2(23, 87)
+rotation = 0.706858
+scale = Vector2(6.475, 6.475)
