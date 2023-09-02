@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wptbdwtir1ow"]
+[gd_scene load_steps=6 format=3 uid="uid://wptbdwtir1ow"]
 
 [ext_resource type="Texture2D" uid="uid://cysgl0vbq71n6" path="res://assets/sprites/duckP.png" id="1_7i45c"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_12rq6"]
+[ext_resource type="PackedScene" uid="uid://bbnssvgfbh53w" path="res://scenes/shotgun.tscn" id="3_p8rq1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_th2tu"]
 radius = 13.0
@@ -32,3 +33,7 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="Shotgun" parent="." instance=ExtResource("3_p8rq1")]
+rotation = -6.28319
+scale = Vector2(0.7, 0.7)
