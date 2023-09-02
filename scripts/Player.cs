@@ -12,11 +12,13 @@ public partial class Player : CharacterBody2D
 	public float Deceleration = 25.0f;
 	[Export]
 	public float JumpVelocity = -300.0f;
+
+	[Export] public float PushForce = 200.0f;
 	
 	private AnimatedSprite2D _aSprite;
 	
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
-	public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	private float _gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public override void _Ready()
 	{
@@ -32,18 +34,22 @@ public partial class Player : CharacterBody2D
 		
 		// Add the gravity.
 		if (!IsOnFloor())
-			velocity.Y += Gravity * (float)delta;
+			velocity.Y += _gravity * (float)delta;
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 			velocity.Y = Jump();
 
 		velocity.X = Move();
-		
-		
+
+
+		velocity.X = Mathf.Min(Speed, velocity.X);
 		Velocity = velocity;
 		HandleAnimation();
-		MoveAndSlide();
+		
+		if (MoveAndSlide())
+			HandleCollision();	
+		// MoveAndSlide();
 	}
 
 	private float Move()
@@ -79,6 +85,24 @@ public partial class Player : CharacterBody2D
 		{
 			_aSprite.FlipH = Velocity.X < 0;
 			_aSprite.Play("walk");
+		}
+	}
+
+	private void HandleCollision()
+	{
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			if (collision.GetCollider() is RigidBody2D)
+			{
+				Node2D collidedNode = collision.GetCollider() as Node2D;
+				if (collidedNode != null)
+				{
+					GD.Print($"Collided with: {collidedNode.Name}");
+				}
+				RigidBody2D collisionObject = collision.GetCollider() as RigidBody2D;
+				collisionObject?.ApplyImpulse(collision.GetNormal() * -PushForce);
+			}
 		}
 	}
 	

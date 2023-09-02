@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dona3a1a1ll4n"
-path="res://.godot/imported/enemy-idlecycle.png-2a8e440f053a4a9de9a1fbb88138a60e.ctex"
+uid="uid://n7rme4gaf4i6"
+path="res://.godot/imported/blast.png-6d204d34ff3d47dde2b821de1a665d61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy-idlecycle.png"
-dest_files=["res://.godot/imported/enemy-idlecycle.png-2a8e440f053a4a9de9a1fbb88138a60e.ctex"]
+source_file="res://assets/sprites/player/blast.png"
+dest_files=["res://.godot/imported/blast.png-6d204d34ff3d47dde2b821de1a665d61.ctex"]
 
 [params]
 

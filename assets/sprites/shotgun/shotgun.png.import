@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3hu2ko43tq8e"
-path="res://.godot/imported/duck-walkcycle.png-1be15f92a930b1c936533e19890806e6.ctex"
+uid="uid://cphbnkfd7hq2s"
+path="res://.godot/imported/shotgun.png-ecfe920170979a0a281244b3a0576595.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-walkcycle.png"
-dest_files=["res://.godot/imported/duck-walkcycle.png-1be15f92a930b1c936533e19890806e6.ctex"]
+source_file="res://assets/sprites/shotgun/shotgun.png"
+dest_files=["res://.godot/imported/shotgun.png-ecfe920170979a0a281244b3a0576595.ctex"]
 
 [params]
 

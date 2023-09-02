@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cysgl0vbq71n6"
-path="res://.godot/imported/duckP.png-d7507a0a69ec529d8c8cb9acc626d8d5.ctex"
+uid="uid://b4xhwg5ojr5yv"
+path="res://.godot/imported/enemy-walkcycle.png-48876a2911c1adaaf598aa0884bf723a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duckP.png"
-dest_files=["res://.godot/imported/duckP.png-d7507a0a69ec529d8c8cb9acc626d8d5.ctex"]
+source_file="res://assets/sprites/enemies/enemy-walkcycle.png"
+dest_files=["res://.godot/imported/enemy-walkcycle.png-48876a2911c1adaaf598aa0884bf723a.ctex"]
 
 [params]
 

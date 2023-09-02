@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://b4y530gfp3ri7"]
 
-[ext_resource type="Texture2D" uid="uid://dona3a1a1ll4n" path="res://assets/sprites/enemy-idlecycle.png" id="1_s1teb"]
+[ext_resource type="Texture2D" uid="uid://dona3a1a1ll4n" path="res://assets/sprites/enemies/enemy-idlecycle.png" id="1_s1teb"]
 [ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_x4bov"]
-[ext_resource type="Texture2D" uid="uid://b4xhwg5ojr5yv" path="res://assets/sprites/enemy-walkcycle.png" id="2_es7yd"]
+[ext_resource type="Texture2D" uid="uid://b4xhwg5ojr5yv" path="res://assets/sprites/enemies/enemy-walkcycle.png" id="2_es7yd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wdsaa"]
 radius = 11.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v7udu6ptw35n"
-path="res://.godot/imported/shotgun-shootcycle.png-db1df0854dd30834725381ba0394e444.ctex"
+uid="uid://bds5qioyynawc"
+path="res://.godot/imported/attack-anim.png-8b489e0f9c98ba63528c7c5dd6949f8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/shotgun-shootcycle.png"
-dest_files=["res://.godot/imported/shotgun-shootcycle.png-db1df0854dd30834725381ba0394e444.ctex"]
+source_file="res://assets/sprites/player/attack-anim.png"
+dest_files=["res://.godot/imported/attack-anim.png-8b489e0f9c98ba63528c7c5dd6949f8b.ctex"]
 
 [params]
 

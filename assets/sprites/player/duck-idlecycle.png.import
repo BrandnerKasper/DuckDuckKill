@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x1i36bi1g2be"
-path="res://.godot/imported/duck-idlecycle.png-65fc6ed35d4e288b145aa4fa12a4e29f.ctex"
+path="res://.godot/imported/duck-idlecycle.png-6cb620c08cca56e9f13ebca09233cce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-idlecycle.png"
-dest_files=["res://.godot/imported/duck-idlecycle.png-65fc6ed35d4e288b145aa4fa12a4e29f.ctex"]
+source_file="res://assets/sprites/player/duck-idlecycle.png"
+dest_files=["res://.godot/imported/duck-idlecycle.png-6cb620c08cca56e9f13ebca09233cce8.ctex"]
 
 [params]
 
