@@ -126,6 +126,5 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Shotgun" parent="." instance=ExtResource("3_p8rq1")]
-visible = false
 rotation = -6.28319
 scale = Vector2(0.7, 0.7)

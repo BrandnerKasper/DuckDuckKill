@@ -12,6 +12,8 @@ public partial class Player : CharacterBody2D
 	public float Deceleration = 25.0f;
 	[Export]
 	public float JumpVelocity = -300.0f;
+
+	[Export] public float PushForce = 200.0f;
 	
 	private AnimatedSprite2D _aSprite;
 	
@@ -43,7 +45,9 @@ public partial class Player : CharacterBody2D
 		
 		Velocity = velocity;
 		HandleAnimation();
-		MoveAndSlide();
+		if (MoveAndSlide())
+			HandleCollision();	
+		// MoveAndSlide();
 	}
 
 	private float Move()
@@ -79,6 +83,24 @@ public partial class Player : CharacterBody2D
 		{
 			_aSprite.FlipH = Velocity.X < 0;
 			_aSprite.Play("walk");
+		}
+	}
+
+	private void HandleCollision()
+	{
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			if (collision.GetCollider() is RigidBody2D)
+			{
+				Node2D collidedNode = collision.GetCollider() as Node2D;
+				if (collidedNode != null)
+				{
+					GD.Print($"Collided with: {collidedNode.Name}");
+				}
+				RigidBody2D Col = collision.GetCollider() as RigidBody2D;
+				Col.ApplyImpulse(collision.GetNormal() * - PushForce);
+			}
 		}
 	}
 	
