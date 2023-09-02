@@ -1,27 +1,22 @@
 using Godot;
-
-namespace DuckDuckKill.scripts;
+using System;
+using System.Linq;
 
 public partial class ShotGun : Node2D
 {
-	[Export] 
-	public float WaitTimeBetweenShots = 0.5f;
-	[Export] 
-	public float Recoil = 500.0f;
-	
 	private AnimatedSprite2D _animatedSprite2D;
 	private Timer _timerBetweenShots;
-	private bool _isShooting = false;
+	bool isShooting = false;
+	[Export] public float WaitTimeBetweenShots = 0.5f;
+	private PackedScene _bullet = (PackedScene)GD.Load("res://scenes//bulletManager.tscn");
 
 	public override void _Ready()
 	{
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_animatedSprite2D.AnimationLooped += () => _animatedSprite2D.Play("default");
 		_timerBetweenShots = GetNode<Timer>("TimerBetweenShots");
-		_timerBetweenShots.Timeout += () => _isShooting = false;
+		_timerBetweenShots.Timeout += () => isShooting = false;
 	}
-
-
+	
 	[Export] public PackedScene BulletScene { get; set; }
 	public override void _Process(double delta)
 	{
@@ -44,13 +39,15 @@ public partial class ShotGun : Node2D
 	public override void _Input(InputEvent @event)
 	{
 		// if mouse left button is pressed
-		if (!_isShooting && @event.IsActionPressed("mouse_left"))
+		if (!isShooting && @event.IsActionPressed("mouse_left"))
 		{
-			SpawnBullet();
+			Shoot();
 			AddScreenShake();
 			_animatedSprite2D.Play("shoot");
-			_isShooting = true;
-			
+			isShooting = true;
+			_animatedSprite2D.AnimationLooped += 
+				() => _animatedSprite2D.Play("default");
+	
 			_timerBetweenShots.WaitTime = WaitTimeBetweenShots;
 
 			_timerBetweenShots.Start();
@@ -58,20 +55,28 @@ public partial class ShotGun : Node2D
 			var player = GetParent<CharacterBody2D>();
 			var normalizedDirection = new Vector2(-Mathf.Cos(Rotation), -Mathf.Sin(Rotation)).Normalized();
 			GD.Print(normalizedDirection.Length());
-			player.Velocity += normalizedDirection * Recoil;
+			player.Velocity += normalizedDirection * 500;
  
 		}
 
 		return;
-
-		void SpawnBullet()
+		
+		void Shoot()
 		{
-			Node2D bullet = BulletScene.Instantiate<Node2D>();
-			AddChild(bullet);
-			Vector2 offset;
-			offset.X = Mathf.Cos(Rotation);
-			offset.Y = Mathf.Sin(Rotation);
-			bullet.GlobalPosition = GlobalPosition + offset * 100;
+			var bulletParent = (Node2D) _bullet.Instantiate();
+			GetTree().Root.AddChild(bulletParent);
+			float offset = 40.0f;
+			Vector2 spawnPosition =
+				GlobalPosition + new Vector2((float)Math.Cos(Rotation) * offset, (float)Math.Sin(Rotation) * offset);
+
+			bulletParent.Position = spawnPosition;
+			bulletParent.Rotation = Rotation;
+			var x = bulletParent.GetChildren().OfType<Bullet>();
+			foreach (var bullet in x)
+			{
+				bullet.Start(Rotation);
+			}
+			
 		}
 
 		void AddScreenShake()
