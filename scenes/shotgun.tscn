@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbnssvgfbh53w"]
+[gd_scene load_steps=4 format=3 uid="uid://bbnssvgfbh53w"]
 
 [ext_resource type="Script" path="res://scripts/ShotGun.cs" id="1_2ier3"]
 [ext_resource type="Texture2D" uid="uid://cphbnkfd7hq2s" path="res://assets/sprites/shotgun.png" id="1_w6vh2"]
+[ext_resource type="PackedScene" uid="uid://dmmcb4vwx615a" path="res://scenes/bullet.tscn" id="2_yvpbf"]
 
 [node name="Shotgun" type="Node2D"]
 scale = Vector2(4.02, 4.02)
 script = ExtResource("1_2ier3")
+BulletScene = ExtResource("2_yvpbf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(24.1294, 5.96046e-08)
 texture = ExtResource("1_w6vh2")
+offset = Vector2(24.015, 0)

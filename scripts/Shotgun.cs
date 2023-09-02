@@ -3,6 +3,7 @@ using System;
 
 public partial class ShotGun : Node2D
 {
+    [Export] public PackedScene BulletScene { get; set; }
     public override void _Process(double delta)
     {
         UpdateRotation();
@@ -26,30 +27,31 @@ public partial class ShotGun : Node2D
         // if mouse left button is pressed
         if (@event.IsActionPressed("mouse_left"))
         {
-            
             GD.Print(Rotation);
-            
-            
-            // get mouse position
-            Vector2 mousePos = GetGlobalMousePosition();
-            Vector2 playerPos = GlobalPosition;
-            
-         
+            SpawnBullet();
+            // This will get the parent and find a child node called "JUICE_ScreenShake"
+            var screenShakeNode = GetParent().GetNode("ScreenShakeManager");
+        
+            // This will cast it to your JUICE_ScreenShake script type
+            var screenShake = screenShakeNode as JUICE_ScreenShake;
 
-            // calculate the direction
-            float deltaX = mousePos.X - playerPos.X;
-            float deltaY = mousePos.Y - playerPos.Y;
+            if (screenShake != null) // Just to make sure we got it
+            {
+                screenShake.StartShake(1, 3.0f);
+            }
+        }
 
-            // calculate the angle
-            float angle = Mathf.Atan2(deltaY, deltaX);
+        return;
 
-            // // create a bullet
-            // Bullet bullet = (Bullet)BulletScene.Instance();
-            // bullet.GlobalPosition = playerPos;
-            // bullet.Rotation = angle;
-            // GetParent().AddChild(bullet);
+        void SpawnBullet()
+        {
+            Node2D bullet = BulletScene.Instantiate<Node2D>();
+            AddChild(bullet);
+            Vector2 offset;
+            offset.X = Mathf.Cos(Rotation);
+            offset.Y = Mathf.Sin(Rotation);
+            bullet.GlobalPosition = GlobalPosition + offset * 100;
         }
     }
-    
     
 }
