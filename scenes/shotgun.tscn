@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4h0voa7dgvve"]
+[gd_scene load_steps=11 format=3 uid="uid://d4h0voa7dgvve"]
 
 [ext_resource type="Script" path="res://scripts/ShotGun.cs" id="1_2ier3"]
 [ext_resource type="Texture2D" uid="uid://dnn2whnv4d7of" path="res://assets/sprites/gun.png" id="2_4c85k"]
+[ext_resource type="PackedScene" uid="uid://dmmcb4vwx615a" path="res://scenes/bullet.tscn" id="2_lggvy"]
 [ext_resource type="Texture2D" uid="uid://v7udu6ptw35n" path="res://assets/sprites/shotgun-shootcycle.png" id="3_uxblk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_raif7"]
@@ -49,13 +50,19 @@ animations = [{
 }],
 "loop": true,
 "name": &"shoot",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [node name="Shotgun" type="Node2D"]
 scale = Vector2(4.02, 4.02)
 script = ExtResource("1_2ier3")
+BulletScene = ExtResource("2_lggvy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10.6965, -0.497512)
 sprite_frames = SubResource("SpriteFrames_dm7no")
+animation = &"shoot"
+
+[node name="TimerBetweenShots" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerBetweenShots" to="." method="_on_timer_between_shots_timeout"]
