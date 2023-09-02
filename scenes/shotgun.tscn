@@ -1,5 +1,10 @@
-[gd_scene format=3 uid="uid://bbnssvgfbh53w"]
+[gd_scene load_steps=2 format=3 uid="uid://bbnssvgfbh53w"]
+
+[ext_resource type="Texture2D" uid="uid://cphbnkfd7hq2s" path="res://assets/sprites/shotgun.png" id="1_w6vh2"]
 
 [node name="Shotgun" type="Node2D"]
-position = Vector2(2, 42)
 scale = Vector2(4.02, 4.02)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(24.1294, 5.96046e-08)
+texture = ExtResource("1_w6vh2")
