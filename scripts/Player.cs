@@ -52,18 +52,11 @@ public partial class Player : CharacterBody2D
         {
             // TODO: attack triggered -> can move again -> spawn area2d to apply force
             _currentState = States.ReleaseCharge;
-            // _aSprite.Play("releaseCharge");
-            // _animName = "releaseCharge";
-            // _holding = false;
-            // _move = true;
         }
 
         if (@event.IsActionPressed("blast"))
         {
-            // TODO: cant move -> blink anim
             _currentState = States.StartCharge;
-            // _charge = true;
-            // _move = false;
         }
 
         // Handle Jump.
