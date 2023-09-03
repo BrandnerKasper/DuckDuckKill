@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1i36bi1g2be"
-path="res://.godot/imported/duck-idlecycle.png-65fc6ed35d4e288b145aa4fa12a4e29f.ctex"
+uid="uid://bds5qioyynawc"
+path="res://.godot/imported/attack-anim.png-8b489e0f9c98ba63528c7c5dd6949f8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-idlecycle.png"
-dest_files=["res://.godot/imported/duck-idlecycle.png-65fc6ed35d4e288b145aa4fa12a4e29f.ctex"]
+source_file="res://assets/sprites/player/attack-anim.png"
+dest_files=["res://.godot/imported/attack-anim.png-8b489e0f9c98ba63528c7c5dd6949f8b.ctex"]
 
 [params]
 

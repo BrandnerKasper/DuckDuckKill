@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v7udu6ptw35n"
-path="res://.godot/imported/shotgun-shootcycle.png-db1df0854dd30834725381ba0394e444.ctex"
+uid="uid://n7rme4gaf4i6"
+path="res://.godot/imported/blast.png-6d204d34ff3d47dde2b821de1a665d61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/shotgun-shootcycle.png"
-dest_files=["res://.godot/imported/shotgun-shootcycle.png-db1df0854dd30834725381ba0394e444.ctex"]
+source_file="res://assets/sprites/player/blast.png"
+dest_files=["res://.godot/imported/blast.png-6d204d34ff3d47dde2b821de1a665d61.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnn2whnv4d7of"
-path="res://.godot/imported/gun.png-a2c399b8b30a04443c2f961b3b922c4a.ctex"
+uid="uid://x1i36bi1g2be"
+path="res://.godot/imported/duck-idlecycle.png-6cb620c08cca56e9f13ebca09233cce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gun.png"
-dest_files=["res://.godot/imported/gun.png-a2c399b8b30a04443c2f961b3b922c4a.ctex"]
+source_file="res://assets/sprites/player/duck-idlecycle.png"
+dest_files=["res://.godot/imported/duck-idlecycle.png-6cb620c08cca56e9f13ebca09233cce8.ctex"]
 
 [params]
 

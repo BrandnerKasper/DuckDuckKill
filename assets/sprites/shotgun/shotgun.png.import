@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cysgl0vbq71n6"
-path="res://.godot/imported/duckP.png-d7507a0a69ec529d8c8cb9acc626d8d5.ctex"
+uid="uid://cphbnkfd7hq2s"
+path="res://.godot/imported/shotgun.png-ecfe920170979a0a281244b3a0576595.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duckP.png"
-dest_files=["res://.godot/imported/duckP.png-d7507a0a69ec529d8c8cb9acc626d8d5.ctex"]
+source_file="res://assets/sprites/shotgun/shotgun.png"
+dest_files=["res://.godot/imported/shotgun.png-ecfe920170979a0a281244b3a0576595.ctex"]
 
 [params]
 

@@ -1,12 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4h0voa7dgvve"]
+[gd_scene load_steps=11 format=3 uid="uid://d4h0voa7dgvve"]
 
 [ext_resource type="Script" path="res://scripts/ShotGun.cs" id="1_2ier3"]
-[ext_resource type="Texture2D" uid="uid://cphbnkfd7hq2s" path="res://assets/sprites/shotgun.png" id="1_w6vh2"]
+[ext_resource type="PackedScene" uid="uid://dmmcb4vwx615a" path="res://scenes/bulletManager.tscn" id="2_6oxar"]
+[ext_resource type="Texture2D" uid="uid://dnn2whnv4d7of" path="res://assets/sprites/shotgun/gun.png" id="3_rkfmn"]
+[ext_resource type="Texture2D" uid="uid://v7udu6ptw35n" path="res://assets/sprites/shotgun/shotgun-shootcycle.png" id="4_tvhy0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raif7"]
+atlas = ExtResource("3_rkfmn")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tlkl"]
+atlas = ExtResource("4_tvhy0")
+region = Rect2(0, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mig3o"]
+atlas = ExtResource("4_tvhy0")
+region = Rect2(64, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7keds"]
+atlas = ExtResource("4_tvhy0")
+region = Rect2(128, 16, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_812of"]
+atlas = ExtResource("4_tvhy0")
+region = Rect2(192, 16, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm7no"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raif7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tlkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mig3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7keds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_812of")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 20.0
+}]
 
 [node name="Shotgun" type="Node2D"]
 scale = Vector2(4.02, 4.02)
 script = ExtResource("1_2ier3")
+BulletScene = ExtResource("2_6oxar")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(24.1294, 5.96046e-08)
-texture = ExtResource("1_w6vh2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10.6965, -0.497512)
+sprite_frames = SubResource("SpriteFrames_dm7no")
+animation = &"shoot"
+
+[node name="TimerBetweenShots" type="Timer" parent="."]

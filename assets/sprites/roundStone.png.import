@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3hu2ko43tq8e"
-path="res://.godot/imported/duck-walkcycle.png-1be15f92a930b1c936533e19890806e6.ctex"
+uid="uid://cq24s4vi63knh"
+path="res://.godot/imported/roundStone.png-65dee2651a75362b511ebb02c03b5e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-walkcycle.png"
-dest_files=["res://.godot/imported/duck-walkcycle.png-1be15f92a930b1c936533e19890806e6.ctex"]
+source_file="res://assets/sprites/roundStone.png"
+dest_files=["res://.godot/imported/roundStone.png-65dee2651a75362b511ebb02c03b5e04.ctex"]
 
 [params]
 
