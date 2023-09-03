@@ -37,10 +37,7 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         _aSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        // _aSprite.Connect("animation_finished", this, "ASpriteOnAnimationFinished");
-
         _aSprite.AnimationLooped += ASpriteOnAnimationFinished;
-        // OnAnimationFinished += ASpriteOnAnimationFinished;
         _aSprite.Animation = "idle";
         _aSprite.Play();
     }
