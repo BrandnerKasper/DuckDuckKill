@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq4sjlqqsd0hk"
-path="res://.godot/imported/bat-leftRightFly-anim.png-8b23da00fb844ea9a7f0dd8089fc6508.ctex"
+uid="uid://dp6tttpsmlirj"
+path="res://.godot/imported/egg-bullet-anim.png-16e4216b55c7cf45513db26728f1c0b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/bat-leftRightFly-anim.png"
-dest_files=["res://.godot/imported/bat-leftRightFly-anim.png-8b23da00fb844ea9a7f0dd8089fc6508.ctex"]
+source_file="res://assets/sprites/egg-bullet-anim.png"
+dest_files=["res://.godot/imported/egg-bullet-anim.png-16e4216b55c7cf45513db26728f1c0b1.ctex"]
 
 [params]
 
