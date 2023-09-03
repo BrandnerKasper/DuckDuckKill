@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b78bojnn74aky"
-path="res://.godot/imported/duck-jump.png-8f1bddde4c0dd84fbfb35cf8cd30bb04.ctex"
+uid="uid://cq4sjlqqsd0hk"
+path="res://.godot/imported/bat-leftRightFly-anim.png-8b23da00fb844ea9a7f0dd8089fc6508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-jump.png"
-dest_files=["res://.godot/imported/duck-jump.png-8f1bddde4c0dd84fbfb35cf8cd30bb04.ctex"]
+source_file="res://assets/sprites/enemies/bat-leftRightFly-anim.png"
+dest_files=["res://.godot/imported/bat-leftRightFly-anim.png-8b23da00fb844ea9a7f0dd8089fc6508.ctex"]
 
 [params]
 

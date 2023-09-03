@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b78bojnn74aky"
-path="res://.godot/imported/duck-jump.png-8f1bddde4c0dd84fbfb35cf8cd30bb04.ctex"
+uid="uid://bcvm65euptvc2"
+path="res://.godot/imported/slime-anim.png-fe9b146f38d1e32d45907ef2514fcf8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck-jump.png"
-dest_files=["res://.godot/imported/duck-jump.png-8f1bddde4c0dd84fbfb35cf8cd30bb04.ctex"]
+source_file="res://assets/sprites/enemies/slime-anim.png"
+dest_files=["res://.godot/imported/slime-anim.png-fe9b146f38d1e32d45907ef2514fcf8e.ctex"]
 
 [params]
 

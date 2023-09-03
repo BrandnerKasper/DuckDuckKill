@@ -6,6 +6,12 @@ namespace DuckDuckKill.scripts;
 
 public partial class ShotGun : Node2D
 {
+	
+	private AudioStreamPlayer shotgunBlast;
+	private AudioStreamPlayer explosion;
+	private AudioStreamPlayer explosion2;
+
+	
 	private AnimatedSprite2D _animatedSprite2D;
 	private Timer _timerBetweenShots;
 	bool isShooting = false;
@@ -17,6 +23,22 @@ public partial class ShotGun : Node2D
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_timerBetweenShots = GetNode<Timer>("TimerBetweenShots");
 		_timerBetweenShots.Timeout += () => isShooting = false;
+		
+		// Audio foo
+		shotgunBlast = new AudioStreamPlayer();
+		shotgunBlast.Stream = GD.Load<AudioStream>("res://assets/audio/ShotgunBlast.wav");
+		shotgunBlast.VolumeDb = Mathf.LinearToDb(0.3f);
+		AddChild(shotgunBlast);
+
+		explosion = new AudioStreamPlayer();
+		explosion.Stream = GD.Load<AudioStream>("res://assets/audio/explosion.wav");
+		explosion.VolumeDb = Mathf.LinearToDb(0.6f);
+		AddChild(explosion);
+
+		explosion2 = new AudioStreamPlayer();
+		explosion2.Stream = GD.Load<AudioStream>("res://assets/audio/explosion2.wav");
+		explosion2.VolumeDb = Mathf.LinearToDb(0.8f);
+		AddChild(explosion2);
 	}
 	
 	[Export] public PackedScene BulletScene { get; set; }
@@ -44,6 +66,11 @@ public partial class ShotGun : Node2D
 		if (!isShooting && @event.IsActionPressed("mouse_left"))
 		{
 			Shoot();
+			
+			shotgunBlast.Play();
+			explosion.Play();
+			explosion2.Play();
+			
 			AddScreenShake();
 			_animatedSprite2D.Play("shoot");
 			isShooting = true;
