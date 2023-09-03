@@ -5056,6 +5056,3 @@ position = Vector2(1728, -197)
 
 [node name="Enemy4" parent="." instance=ExtResource("10_srrco")]
 position = Vector2(367, 163)
-
-[node name="Enemy5" parent="." instance=ExtResource("10_srrco")]
-position = Vector2(76, 30)
