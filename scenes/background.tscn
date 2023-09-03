@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://dccxsfnm1y7xi"]
+
+[ext_resource type="Texture2D" uid="uid://c6u3qj501e1gy" path="res://assets/sprites/background1.png" id="2_ms4i7"]
+[ext_resource type="Texture2D" uid="uid://oe1ed4nxnp43" path="res://assets/sprites/background2.png" id="3_fcgi1"]
+[ext_resource type="Texture2D" uid="uid://c5qy7uqt0kjac" path="res://assets/sprites/background3.png" id="4_u1esi"]
+[ext_resource type="Texture2D" uid="uid://5a5rpsspfl67" path="res://assets/sprites/background4.png" id="5_tl630"]
+[ext_resource type="Texture2D" uid="uid://dexxcui6d56wc" path="res://assets/sprites/background5.png" id="6_0gri6"]
+[ext_resource type="Texture2D" uid="uid://ddy0jgj0m88ey" path="res://assets/sprites/background6.png" id="7_u0t2r"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_ygti1"]
+script/source = "using Godot;
+using System;
+
+public partial class ParallaxBackground : Godot.ParallaxBackground
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		scroll_base_offset
+	}
+	
+	
+}
+"
+
+[node name="background" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(600, 100)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 600, 100)
+script = SubResource("CSharpScript_ygti1")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_ms4i7")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_fcgi1")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("4_u1esi")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("5_tl630")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("6_0gri6")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+texture = ExtResource("7_u0t2r")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 400)
