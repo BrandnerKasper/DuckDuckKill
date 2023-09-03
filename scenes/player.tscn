@@ -187,6 +187,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j6lbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iug2p")
+}],
+"loop": true,
+"name": &"holdCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eb4hb")
 }, {
 "duration": 1.0,
@@ -201,6 +212,61 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvkwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loh5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23xe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43imc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40vjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cxbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1muxb")
+}],
+"loop": true,
+"name": &"releaseCharge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qf5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2rts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyn54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cof74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unsrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uie0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sokc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fcrh")
+}],
+"loop": true,
+"name": &"startCharge",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -241,9 +307,8 @@ shape = SubResource("CapsuleShape2D_th2tu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.487, 0.5)
 sprite_frames = SubResource("SpriteFrames_gdq32")
-animation = &"attack"
-frame = 5
-frame_progress = 0.00725854
+animation = &"startCharge"
+frame_progress = 0.89247
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
