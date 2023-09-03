@@ -34,12 +34,23 @@ public partial class Player : CharacterBody2D
 
     private string _animName = "";
     
+    // Audio
+    private AudioStreamPlayer _jumpQuack;
+    // private AudioStreamPlayer _
+    
     public override void _Ready()
     {
+        // Animations
         _aSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         _aSprite.AnimationLooped += ASpriteOnAnimationFinished;
         _aSprite.Animation = "idle";
         _aSprite.Play();
+        
+        // Audio
+        _jumpQuack = new AudioStreamPlayer();
+        _jumpQuack.Stream = GD.Load<AudioStream>("res://assets/audio/quack.wav");
+        _jumpQuack.VolumeDb = Mathf.LinearToDb(0.8f);
+        AddChild(_jumpQuack);
     }
 
 
@@ -122,6 +133,7 @@ public partial class Player : CharacterBody2D
         }
         _velocity.Y = JumpVelocity;
         _currentState = States.Idle;
+        _jumpQuack.Play();
     }
 
     private void HandleAnimation()
