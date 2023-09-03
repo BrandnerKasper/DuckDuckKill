@@ -4,8 +4,8 @@ namespace DuckDuckKill.scripts;
 
 public partial class Slime : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public float Speed = 100.0f;
+	public float Health = 100.0f;
 
 	private AnimatedSprite2D _aSprite;
 
@@ -27,23 +27,44 @@ public partial class Slime : CharacterBody2D
 		if (!IsOnFloor())
 			velocity.Y += gravity * (float)delta;
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-			velocity.Y = JumpVelocity;
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("left", "right", "up", "down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
+		velocity.X = Speed;
 
 		Velocity = velocity;
 		MoveAndSlide();
+		
+		HandleAnimation();
+		
+		// Change move direction
+		if (Velocity.X == 0.0f)
+		{
+			Speed = -Speed;
+		}
+		
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			KinematicCollision2D collision = GetSlideCollision(i);
+			if (((Node) collision.GetCollider()).Name.ToString().Contains("Bullet"))
+			{
+				Health -= 10.0f;
+				if (Health <= 0.0f)
+				{
+					this.QueueFree();
+				}
+			}
+		}
+	}
+
+	private void HandleAnimation()
+	{
+		if (Velocity.X == 0.0f)
+		{
+			
+			_aSprite.Play("idle");
+		}
+		else
+		{
+			_aSprite.FlipH = Velocity.X < 0;
+			_aSprite.Play("walk");
+		}
 	}
 }
