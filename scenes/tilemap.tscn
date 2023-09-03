@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://qwmuq3pr73tv"]
+[gd_scene load_steps=15 format=3 uid="uid://c0ged74otsmg"]
 
 [ext_resource type="Texture2D" uid="uid://cmeuxwvlrshms" path="res://assets/sprites/main_lev_buildA.png" id="1_s5vj4"]
 [ext_resource type="Texture2D" uid="uid://bku5j7sveqsc2" path="res://assets/sprites/main_lev_buildB.png" id="2_1nrfj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dexxcui6d56wc" path="res://assets/sprites/background5.png" id="7_17j48"]
 [ext_resource type="Texture2D" uid="uid://ddy0jgj0m88ey" path="res://assets/sprites/background6.png" id="8_11xb8"]
 [ext_resource type="PackedScene" uid="uid://wptbdwtir1ow" path="res://scenes/player.tscn" id="9_jvpf1"]
+[ext_resource type="PackedScene" uid="uid://b4y530gfp3ri7" path="res://scenes/slime.tscn" id="10_srrco"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syadr"]
 texture = ExtResource("1_s5vj4")
@@ -5043,3 +5044,18 @@ motion_mirroring = Vector2(426, 0)
 texture = ExtResource("8_11xb8")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 400)
+
+[node name="Enemy" parent="." instance=ExtResource("10_srrco")]
+position = Vector2(1338, 218)
+
+[node name="Enemy2" parent="." instance=ExtResource("10_srrco")]
+position = Vector2(2193, 220)
+
+[node name="Enemy3" parent="." instance=ExtResource("10_srrco")]
+position = Vector2(1728, -197)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_srrco")]
+position = Vector2(367, 163)
+
+[node name="Enemy5" parent="." instance=ExtResource("10_srrco")]
+position = Vector2(76, 30)

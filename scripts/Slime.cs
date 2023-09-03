@@ -43,13 +43,19 @@ public partial class Slime : CharacterBody2D
 		for (int i = 0; i < GetSlideCollisionCount(); i++)
 		{
 			KinematicCollision2D collision = GetSlideCollision(i);
-			if (((Node) collision.GetCollider()).Name.ToString().Contains("Bullet"))
+			string collisionName = ((Node) collision.GetCollider()).Name.ToString();
+			if (collisionName.Contains("Bullet"))
 			{
 				Health -= 10.0f;
 				if (Health <= 0.0f)
 				{
 					this.QueueFree();
 				}
+			}
+
+			if (collisionName.Contains("Player"))
+			{
+				// Kill player
 			}
 		}
 	}

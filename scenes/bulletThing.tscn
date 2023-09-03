@@ -91,6 +91,8 @@ animations = [{
 
 [node name="Bullet1" type="CharacterBody2D"]
 scale = Vector2(0.089125, 0.0888125)
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_s6tbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
