@@ -2,7 +2,7 @@ using Godot;
 
 namespace DuckDuckKill.scripts;
 
-public partial class Enemy : CharacterBody2D
+public partial class Slime : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bigo2q6olht6e" path="res://scenes/ground.tscn" id="1_0hyg5"]
 [ext_resource type="PackedScene" uid="uid://wptbdwtir1ow" path="res://scenes/player.tscn" id="2_6eqgs"]
 [ext_resource type="PackedScene" uid="uid://cwpmd8g086kuv" path="res://scenes/stone.tscn" id="3_n72qo"]
-[ext_resource type="PackedScene" uid="uid://b4y530gfp3ri7" path="res://scenes/enemy.tscn" id="4_7kiuy"]
+[ext_resource type="PackedScene" uid="uid://b4y530gfp3ri7" path="res://scenes/slime.tscn" id="4_7kiuy"]
 
 [node name="Level" type="Node2D"]
 
