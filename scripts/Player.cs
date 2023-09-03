@@ -6,6 +6,7 @@ internal enum States
 {
     Idle,
     Move,
+    StartJump,
     Jump,
     StartCharge,
     HoldingCharge,
@@ -62,7 +63,7 @@ public partial class Player : CharacterBody2D
         // Handle Jump.
         if (Input.IsActionJustPressed("jump") && IsOnFloor())
         {
-            Jump();
+            _currentState = States.StartJump;
         }
     }
 
@@ -78,6 +79,7 @@ public partial class Player : CharacterBody2D
         if (!IsOnFloor())
             _velocity.Y += _gravity * (float)delta;
         Move();
+        Jump();
         
         Velocity = _velocity;
         _velocity = Velocity;
@@ -90,7 +92,7 @@ public partial class Player : CharacterBody2D
 
     private void Move()
     {
-        if (_currentState != States.Idle && _currentState != States.Move && _currentState != States.Jump)
+        if (_currentState != States.Idle && _currentState != States.Move)
         {
             return;
         }
@@ -117,12 +119,12 @@ public partial class Player : CharacterBody2D
 
     private void Jump()
     {
-        if (_currentState != States.Idle && _currentState != States.Move)
+        if (_currentState != States.Jump)
         {
             return;
         }
         _velocity.Y = JumpVelocity;
-        _currentState = States.Jump;
+        _currentState = States.Idle;
     }
 
     private void HandleAnimation()
@@ -146,9 +148,9 @@ public partial class Player : CharacterBody2D
                 _aSprite.Play("walk");
                 _animName = "walk";
                 break;
-            case States.Jump:
-                // _aSprite.Play("jump");
-                // _animName = "jump";
+            case States.StartJump:
+                _aSprite.Play("jump");
+                _animName = "jump";
                 break;
             case States.StartCharge:
                 _aSprite.Play("startCharge");
@@ -166,36 +168,6 @@ public partial class Player : CharacterBody2D
                 _currentState = States.Idle;
                 break;
         }
-        
-
-        // if (_charge)
-        // {
-        //     _aSprite.Play("startCharge");
-        //     _animName = "startCharge";
-        //     
-        //     // _charge = false;
-        // }
-        //
-        // if (_holding)
-        // {
-        //     _aSprite.Play("holdCharge");
-        //     _animName = "holdCharge";
-        // }
-        //
-        // if (!_charge && !_holding)
-        // {
-        //     if (Velocity.X == 0.0f)
-        //     {
-        //         _aSprite.Play("idle");
-        //         _animName = "idle";
-        //     }
-        //     else
-        //     {
-        //         _aSprite.FlipH = Velocity.X < 0;
-        //         _aSprite.Play("walk");
-        //         _animName = "walk";
-        //     }
-        // }
     }
 
     private void HandleCollision()
@@ -223,8 +195,6 @@ public partial class Player : CharacterBody2D
         // GD.Print(_animName);
         if (_animName.Equals("startCharge"))
         {
-            // _charge = false;
-            // _holding = true;
             _currentState = States.HoldingCharge;
             _aSprite.Pause();
         }
@@ -233,8 +203,12 @@ public partial class Player : CharacterBody2D
         {
             _currentState = States.Idle;
             _aSprite.Pause();
-            // _holding = false;
-            // _move = true;
+        }
+
+        if (_animName.Equals("jump"))
+        {
+            _currentState = States.Jump;
+            _aSprite.Pause();
         }
     }
     
