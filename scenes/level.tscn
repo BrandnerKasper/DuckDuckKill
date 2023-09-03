@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccq520uux11k2"]
+[gd_scene load_steps=4 format=3 uid="uid://ccq520uux11k2"]
 
 [ext_resource type="PackedScene" uid="uid://bigo2q6olht6e" path="res://scenes/ground.tscn" id="1_fxxwu"]
 [ext_resource type="PackedScene" uid="uid://wptbdwtir1ow" path="res://scenes/player.tscn" id="2_a3vei"]
 [ext_resource type="PackedScene" uid="uid://cwpmd8g086kuv" path="res://scenes/stone.tscn" id="4_62lyx"]
-[ext_resource type="PackedScene" uid="uid://dk3i8lhqnc4fv" path="res://scenes/roundStone.tscn" id="4_mf4sy"]
-[ext_resource type="PackedScene" uid="uid://b4y530gfp3ri7" path="res://scenes/enemy.tscn" id="4_ym7xf"]
 
 [node name="Level" type="Node2D"]
 
@@ -31,9 +29,3 @@ position = Vector2(488, -148)
 [node name="Ground4" parent="." instance=ExtResource("1_fxxwu")]
 position = Vector2(668, 100)
 scale = Vector2(15, 15)
-
-[node name="roundStone" parent="." instance=ExtResource("4_mf4sy")]
-position = Vector2(21, -25)
-
-[node name="Enemy" parent="." instance=ExtResource("4_ym7xf")]
-position = Vector2(389, 0)
