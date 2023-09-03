@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0gvutuagi026"]
+
+[ext_resource type="Script" path="res://scripts/Trail.cs" id="1_n4jso"]
+
+[node name="Trail" type="Line2D"]
+script = ExtResource("1_n4jso")
